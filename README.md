@@ -27,20 +27,11 @@ Both are produced into a single `release/` folder when you build.
 
 The USB tool needs a one-time setup on each HMI where you want auto-run.
 
-1) Copy these files to the USB root:
-- `SequenceDownloaderUSB.exe`
-- `run_on_insert.ps1`
-- `install_usb_autorun.ps1`
-- `settings.json`
-- `README.txt`
+1) Drag `SetupSequenceDownloaderUSB.exe` onto the USB (any folder is fine).
 
-2) Label the USB drive as `SEQUSB`.
-
-3) On the HMI (admin), run:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
-```
+2) Run it on the HMI as Administrator.
+   It will copy the required files, set the label to `SEQUSB`, and (if you pass
+   `--install-task`) install the autorun task.
 
 After that, inserting a `SEQUSB` drive runs the downloader and writes output to:
 `<USB>\output\seq_export_*.zip`

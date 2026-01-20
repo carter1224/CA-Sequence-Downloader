@@ -5,22 +5,12 @@ What it does
 - Writes ZIP exports to <USB>\output.
 
 USB prep (per USB drive)
-1) Label the USB drive: SEQUSB
-2) Copy this folder to the root of the USB:
-   <USB>\Sequence downloader USB
-3) Make sure these files exist in that folder:
-   - SequenceDownloaderUSB.exe
-   - run_on_insert.ps1
-   - install_usb_autorun.ps1
-   - settings.json
+1) Drag SetupSequenceDownloaderUSB.exe onto the USB (any folder is fine).
+2) Run it as Administrator. It will copy files and set the label to SEQUSB.
 
 PC setup (HMI only)
-1) Open PowerShell as Administrator.
-2) Run:
-   powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
-   (Replace <USB> with the actual drive letter.)
-   - Or run the installer EXE (preferred):
-     <USB>\Sequence downloader USB\SetupSequenceDownloaderUSB.exe
+1) Run SetupSequenceDownloaderUSB.exe with --install-task on the HMI:
+   <USB>\SetupSequenceDownloaderUSB.exe --install-task
 
 Using it
 - Plug the USB in. The task runs automatically.
@@ -33,7 +23,7 @@ Settings
   ip, eth_slot, cpu_slot, out_dir (optional), chunk_size (optional), pretty_json (optional)
 
 Notes
-- You only need to run the installer once per PC.
+- You only need to run the installer once per HMI.
 - If you update files, re-run the installer.
 Windows support
 - Windows 10/11 only (not supported on Windows CE).
