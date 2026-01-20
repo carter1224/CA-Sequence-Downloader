@@ -24,8 +24,10 @@ jobs:
         shell: pwsh
         run: .\build.ps1
 
-      - name: Upload release
-        uses: actions/upload-artifact@v4
+      - name: Upload release assets
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
         with:
-          name: release
-          path: release
+          files: |
+            release/SequenceDownloader.exe
+            release/SetupSequenceDownloaderUSB.exe
