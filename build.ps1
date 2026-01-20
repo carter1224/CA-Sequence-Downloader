@@ -18,6 +18,10 @@ pyinstaller "SequenceDownloader.spec" --noconfirm --clean
 Copy-Item "dist\\SequenceDownloader.exe" "..\\$ReleaseDir\\SequenceDownloader.exe" -Force
 Pop-Location
 
+Push-Location "Sequence downloader USB"
+pyinstaller "SequenceDownloaderUSB.spec" --noconfirm --clean
+Pop-Location
+
 Push-Location "Sequence downloader USB\\SetupUsb"
 dotnet publish "SetupUsb.csproj" -c Release
 Copy-Item "bin\\Release\\net8.0-windows\\win-x64\\publish\\SetupSequenceDownloaderUSB.exe" "..\\..\\$ReleaseDir\\SetupSequenceDownloaderUSB.exe" -Force

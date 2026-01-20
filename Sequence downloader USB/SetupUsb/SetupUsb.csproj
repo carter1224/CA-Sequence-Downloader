@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\\SequenceDownloaderUSB.exe" LogicalName="payload.SequenceDownloaderUSB.exe" />
+    <EmbeddedResource Include="..\\dist\\SequenceDownloaderUSB.exe" LogicalName="payload.SequenceDownloaderUSB.exe" />
     <EmbeddedResource Include="..\\run_on_insert.ps1" LogicalName="payload.run_on_insert.ps1" />
     <EmbeddedResource Include="..\\install_usb_autorun.ps1" LogicalName="payload.install_usb_autorun.ps1" />
     <EmbeddedResource Include="..\\settings.json" LogicalName="payload.settings.json" />
