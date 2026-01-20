@@ -1,0 +1,21 @@
+Sequence Navigator/
+dist/
+*.acd
+*.ACD
+*.CALO.*
+*.log
+
+Sequence downloader PC/build/
+Sequence downloader PC/dist/
+Sequence downloader PC/output/
+
+Sequence downloader USB/build/
+Sequence downloader USB/dist/
+Sequence downloader USB/SetupUsb/bin/
+Sequence downloader USB/SetupUsb/obj/
+
+release/
+**/.DS_Store
+**/Thumbs.db
+*.exe
+seq_testing.sln

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SetupSequenceDownloaderUSB</AssemblyName>
+    <RootNamespace>SetupSequenceDownloaderUSB</RootNamespace>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\\SequenceDownloaderUSB.exe" LogicalName="payload.SequenceDownloaderUSB.exe" />
+    <EmbeddedResource Include="..\\run_on_insert.ps1" LogicalName="payload.run_on_insert.ps1" />
+    <EmbeddedResource Include="..\\install_usb_autorun.ps1" LogicalName="payload.install_usb_autorun.ps1" />
+    <EmbeddedResource Include="..\\settings.json" LogicalName="payload.settings.json" />
+    <EmbeddedResource Include="..\\README.txt" LogicalName="payload.README.txt" />
+  </ItemGroup>
+</Project>
