@@ -14,7 +14,7 @@ USB prep (per USB drive)
    - install_usb_autorun.ps1
    - settings.json
 
-PC setup (per Windows machine)
+PC setup (HMI only)
 1) Open PowerShell as Administrator.
 2) Run:
    powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
@@ -35,3 +35,5 @@ Settings
 Notes
 - You only need to run the installer once per PC.
 - If you update files, re-run the installer.
+Windows support
+- Windows 10/11 only (not supported on Windows CE).

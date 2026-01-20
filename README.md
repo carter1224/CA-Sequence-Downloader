@@ -1,31 +1,61 @@
 # CA Sequence Downloader
 
-This repo contains two separate Windows executables:
+This repo builds two separate Windows tools:
 
 - `SequenceDownloader.exe` (PC tool)
 - `SequenceDownloaderUSB.exe` (USB tool)
 
-Both are built automatically and placed into a single `release/` folder.
+Both are produced into a single `release/` folder when you build.
 
-## Layout
+## Quick start
 
-- `Sequence downloader PC/` - PC downloader source and PyInstaller spec
-- `Sequence downloader USB/` - USB downloader source and PyInstaller spec
-- `release/` - combined output folder (created by build)
-
-## Build (local)
-
-Prereqs:
+1) Install prerequisites:
 - Python 3.11+
 - `pip install pyinstaller pycomm3`
 
-Build both and place EXEs into `release/`:
+2) Build both EXEs into `release/`:
 
 ```powershell
 .\build.ps1
 ```
 
-## Build (CI)
+3) Grab the outputs:
+- `release\SequenceDownloader.exe`
+- `release\SequenceDownloaderUSB.exe`
 
-GitHub Actions builds on every push and uploads a `release` artifact
+## USB tool setup (for HMI)
+
+The USB tool needs a one-time setup on each HMI where you want auto-run.
+
+1) Copy these files to the USB root:
+- `SequenceDownloaderUSB.exe`
+- `run_on_insert.ps1`
+- `install_usb_autorun.ps1`
+- `settings.json`
+- `README.txt`
+
+2) Label the USB drive as `SEQUSB`.
+
+3) On the HMI (admin), run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
+```
+
+After that, inserting a `SEQUSB` drive runs the downloader and writes output to:
+`<USB>\output\seq_export_*.zip`
+
+## Project layout
+
+- `Sequence downloader PC/` - PC downloader source and PyInstaller spec
+- `Sequence downloader USB/` - USB downloader source and PyInstaller spec
+- `release/` - combined output folder (created by build)
+
+## Windows support
+
+Requires Windows 10/11. This does not run on Windows CE-based HMIs.
+
+## CI build
+
+GitHub Actions builds on release publish and uploads a `release` artifact
 containing both EXEs.
