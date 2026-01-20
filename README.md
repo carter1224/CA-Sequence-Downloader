@@ -3,7 +3,7 @@
 This repo builds two separate Windows tools:
 
 - `SequenceDownloader.exe` (PC tool)
-- `SequenceDownloaderUSB.exe` (USB tool)
+- `SetupSequenceDownloaderUSB.exe` (USB setup tool)
 
 Both are produced into a single `release/` folder when you build.
 
@@ -21,7 +21,7 @@ Both are produced into a single `release/` folder when you build.
 
 3) Grab the outputs:
 - `release\SequenceDownloader.exe`
-- `release\SequenceDownloaderUSB.exe`
+- `release\SetupSequenceDownloaderUSB.exe`
 
 ## USB tool setup (for HMI)
 
