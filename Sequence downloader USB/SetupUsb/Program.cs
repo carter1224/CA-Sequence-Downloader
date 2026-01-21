@@ -26,7 +26,6 @@ internal static class Program
             string label = DefaultLabel;
             string taskName = DefaultTaskName;
             bool skipPrompt = false;
-            bool installTask = false;
             PauseOnExit = true;
 
             FallbackErrorFilePath = Path.Combine(AppContext.BaseDirectory, "SETUP_ERROR.txt");
@@ -58,9 +57,6 @@ internal static class Program
                         break;
                 case "--yes":
                     skipPrompt = true;
-                    break;
-                case "--install-task":
-                    installTask = true;
                     break;
                 case "--no-pause":
                     PauseOnExit = false;
@@ -136,10 +132,6 @@ internal static class Program
             ExtractPayload("payload.README.txt", Path.Combine(targetRoot, "README.txt"));
 
             Retry("Set USB label", () => SetVolumeLabel(driveLetter, label));
-            if (installTask)
-            {
-                Retry("Install scheduled task", () => InstallScheduledTask(taskName, label));
-            }
 
             Console.WriteLine("Setup complete.");
             PauseIfEnabled("Press Enter to close...");
@@ -165,7 +157,6 @@ internal static class Program
         Console.WriteLine("  --label NAME USB volume label (default: SEQUSB)");
         Console.WriteLine("  --task NAME  Scheduled task name (default: SequenceDownloaderUSB)");
         Console.WriteLine("  --yes        Skip confirmation prompt");
-        Console.WriteLine("  --install-task  Install the USB autorun scheduled task on this PC");
         Console.WriteLine("  --keep-setup    Do not delete this installer after success");
     }
 

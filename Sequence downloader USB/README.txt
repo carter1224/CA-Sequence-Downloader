@@ -9,7 +9,6 @@ Which EXE to run
 SetupSequenceDownloaderUSB.exe
 - Run this to prepare a USB drive.
 - It copies files and labels the drive SEQUSB.
-- Optional: adds auto-run on an HMI with --install-task.
 
 SequenceDownloaderUSB.exe
 - The downloader that runs when the USB is inserted.
@@ -19,11 +18,6 @@ USB prep (per USB drive)
 1) Copy SetupSequenceDownloaderUSB.exe to the USB (any folder is fine).
 2) Run it as Administrator.
 3) Confirm the drive label was set to SEQUSB.
-
-HMI setup (auto-run)
-1) On the HMI, run:
-   <USB>\SetupSequenceDownloaderUSB.exe --install-task
-2) This installs the auto-run task for SEQUSB drives.
 
 Manual setup (PowerShell, HMI only)
 1) Copy this folder to the USB root:
