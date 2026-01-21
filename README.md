@@ -23,7 +23,42 @@ Both are produced into a single `release/` folder when you build.
 - `release\SequenceDownloader.exe`
 - `release\SetupSequenceDownloaderUSB.exe`
 
-## USB tool setup (for HMI)
+## Executables
+
+### SequenceDownloader.exe (PC tool)
+
+Purpose:
+- Run downloads on a Windows 10/11 PC.
+
+Run:
+```powershell
+.\SequenceDownloader.exe --ip 192.168.1.11
+```
+
+Notes:
+- Requires network access to the PLC.
+- Output ZIPs are written to the configured output folder.
+
+### SetupSequenceDownloaderUSB.exe (USB setup tool)
+
+Purpose:
+- Prepare a USB drive with the downloader files and label it `SEQUSB`.
+- Optionally install the auto-run task on an HMI.
+
+Run (USB prep only):
+```powershell
+.\SetupSequenceDownloaderUSB.exe
+```
+
+Run (USB prep + HMI auto-run task):
+```powershell
+.\SetupSequenceDownloaderUSB.exe --install-task
+```
+
+Notes:
+- Intended for Windows 10/11 HMIs (not Windows CE).
+
+## USB setup (for HMI)
 
 The USB tool needs a one-time setup on each HMI where you want auto-run.
 
