@@ -34,20 +34,20 @@ def load_settings():
     settings_path = base_dir / "settings.json"
     if not settings_path.exists():
         write_settings(settings_path, DEFAULT_SETTINGS)
-        return dict(DEFAULT_SETTINGS)
+        return dict(DEFAULT_SETTINGS), True
     try:
         current = json.loads(settings_path.read_text(encoding="utf-8"))
     except Exception:
         write_settings(settings_path, DEFAULT_SETTINGS)
-        return dict(DEFAULT_SETTINGS)
+        return dict(DEFAULT_SETTINGS), False
     if not isinstance(current, dict):
         write_settings(settings_path, DEFAULT_SETTINGS)
-        return dict(DEFAULT_SETTINGS)
+        return dict(DEFAULT_SETTINGS), False
     merged = dict(DEFAULT_SETTINGS)
     merged.update(current)
     if merged != current:
         write_settings(settings_path, merged)
-    return merged
+    return merged, False
 
 
 def write_error_file(error_path: Path, message: str) -> None:
@@ -125,7 +125,10 @@ def parse_args():
 
 def main():
     args = parse_args()
-    settings = load_settings()
+    settings, created_settings = load_settings()
+    if created_settings:
+        print("Created settings.json. Update it and run again.")
+        return
 
     ip = args.ip or settings.get("ip")
     eth_slot = args.eth_slot if args.eth_slot is not None else settings.get("eth_slot")

@@ -4,7 +4,14 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-if (-not (Get-Command pyinstaller -ErrorAction SilentlyContinue)) {
+$python = Get-Command python -ErrorAction SilentlyContinue
+if (-not $python) {
+    throw "python not found. Install Python 3.11+"
+}
+
+try {
+    & $python.Source -m PyInstaller --version | Out-Null
+} catch {
     throw "pyinstaller not found. Run: pip install pyinstaller pycomm3"
 }
 
@@ -14,12 +21,20 @@ if (Test-Path $ReleaseDir) {
 New-Item -ItemType Directory -Path $ReleaseDir | Out-Null
 
 Push-Location "Sequence downloader PC"
-pyinstaller "SequenceDownloader.spec" --noconfirm --clean
+& $python.Source -m PyInstaller "SequenceDownloader.spec" --noconfirm --clean
 Copy-Item "dist\\SequenceDownloader.exe" "..\\$ReleaseDir\\SequenceDownloader.exe" -Force
 Pop-Location
 
+$pcBundleDir = Join-Path $ReleaseDir "SequenceDownloader_PC"
+New-Item -ItemType Directory -Path $pcBundleDir | Out-Null
+Copy-Item "Sequence downloader PC\\dist\\SequenceDownloader.exe" "$pcBundleDir\\SequenceDownloader.exe" -Force
+Copy-Item "Sequence downloader PC\\settings.json" "$pcBundleDir\\settings.json" -Force
+Copy-Item "Sequence downloader PC\\README.txt" "$pcBundleDir\\README.txt" -Force
+Compress-Archive -Path "$pcBundleDir\\*" -DestinationPath (Join-Path $ReleaseDir "SequenceDownloader_PC.zip") -Force
+Remove-Item $pcBundleDir -Recurse -Force
+
 Push-Location "Sequence downloader USB"
-pyinstaller "SequenceDownloaderUSB.spec" --noconfirm --clean
+& $python.Source -m PyInstaller "SequenceDownloaderUSB.spec" --noconfirm --clean
 Pop-Location
 
 Push-Location "Sequence downloader USB\\SetupUsb"
