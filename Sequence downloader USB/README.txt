@@ -1,39 +1,46 @@
-Sequence Downloader USB - Setup and Use
+Sequence Downloader USB - User Guide
 
-What it does
+Purpose
 - Runs the sequence download when a USB labeled SEQUSB is inserted.
 - Writes ZIP exports to <USB>\output.
 
-Executables
+Which EXE to run
 
 SetupSequenceDownloaderUSB.exe
-- Prepares a USB drive: copies files and labels it SEQUSB.
-- Optional: installs the auto-run task on an HMI (with --install-task).
+- Run this to prepare a USB drive.
+- It copies files and labels the drive SEQUSB.
+- Optional: adds auto-run on an HMI with --install-task.
 
 SequenceDownloaderUSB.exe
-- The downloader that actually runs on USB insert.
-- It is copied to the USB by the setup tool.
+- The downloader that runs when the USB is inserted.
+- It is placed on the USB by the setup tool.
 
 USB prep (per USB drive)
-1) Drag SetupSequenceDownloaderUSB.exe onto the USB (any folder is fine).
-2) Run it as Administrator. It will copy files and set the label to SEQUSB.
+1) Copy SetupSequenceDownloaderUSB.exe to the USB (any folder is fine).
+2) Run it as Administrator.
+3) Confirm the drive label was set to SEQUSB.
 
 HMI setup (auto-run)
-1) Run SetupSequenceDownloaderUSB.exe with --install-task on the HMI:
+1) On the HMI, run:
    <USB>\SetupSequenceDownloaderUSB.exe --install-task
+2) This installs the auto-run task for SEQUSB drives.
 
-Using it
-1) Plug the USB in. The task runs automatically.
-2) Output is written to <USB>\output\seq_export_*.zip
-3) If it fails, check <USB>\output\EXPORT_ERROR.txt
-4) If setup fails, check <USB>\Sequence downloader USB\SETUP_ERROR.txt
+Using the USB
+1) Insert the USB.
+2) The download runs automatically.
+3) Output is written to <USB>\output\seq_export_*.zip
+
+Troubleshooting
+- If the download fails, check <USB>\output\EXPORT_ERROR.txt
+- If setup fails, check <USB>\Sequence downloader USB\SETUP_ERROR.txt
 
 Settings
 - Edit settings.json to set:
   ip, eth_slot, cpu_slot, out_dir (optional), chunk_size (optional), pretty_json (optional)
 
 Notes
-- You only need to run the installer once per HMI.
-- If you update files, re-run the installer.
+- Run setup once per HMI.
+- Re-run setup after updating files.
+
 Windows support
 - Windows 10/11 only (not supported on Windows CE).
