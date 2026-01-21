@@ -9,21 +9,17 @@ Which EXE to run
 SetupSequenceDownloaderUSB.exe
 - Run this to prepare a USB drive.
 - It copies files and labels the drive SEQUSB.
-  Manual (PowerShell, HMI only):
-  1) Copy this folder to the USB root:
-     <USB>\Sequence downloader USB
-  2) On the HMI (admin), run:
-     powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
-  3) This installs the task that runs run_on_insert.ps1 when SEQUSB is inserted.
 
 SequenceDownloaderUSB.exe
 - The downloader that runs when the USB is inserted.
 - It is placed on the USB by the setup tool.
 
-USB prep (per USB drive)
+SequenceDownloaderUSB setup (per USB drive)
 1) Copy SetupSequenceDownloaderUSB.exe to the USB (any folder is fine).
-2) Run it as Administrator.
-3) Confirm the drive label was set to SEQUSB.
+2) Run it as Administrator to prep the USB and label it SEQUSB.
+3) On the HMI (admin), run:
+   powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
+4) This installs the auto-run task that triggers run_on_insert.ps1.
 
 Using the USB
 1) Insert the USB.
