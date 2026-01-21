@@ -5,14 +5,16 @@ Two tools are provided for end users:
 - `SequenceDownloader.exe` (PC tool)
 - `SetupSequenceDownloaderUSB.exe` (USB setup tool)
 
-## PC tool (SequenceDownloader.exe)
+## PC tool (SequenceDownloader_PC.zip)
 
-Use this on a Windows 10/11 PC to download sequences directly.
+Download `SequenceDownloader_PC.zip`. It contains `SequenceDownloader.exe`,
+`settings.json`, and `README.txt`.
 
 Steps:
-1) Run `SequenceDownloader.exe`.
-2) Enter the PLC IP and start the download.
-3) The ZIP output is written to the configured output folder.
+1) Extract the ZIP.
+2) Edit `settings.json` and set the PLC IP.
+3) Run `SequenceDownloader.exe`.
+4) The output ZIP is written to the configured output folder.
 
 Notes:
 - Requires network access to the PLC.
