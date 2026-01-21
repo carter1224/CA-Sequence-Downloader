@@ -25,6 +25,13 @@ HMI setup (auto-run)
    <USB>\SetupSequenceDownloaderUSB.exe --install-task
 2) This installs the auto-run task for SEQUSB drives.
 
+Manual setup (PowerShell, HMI only)
+1) Copy this folder to the USB root:
+   <USB>\Sequence downloader USB
+2) On the HMI (admin), run:
+   powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
+3) This installs the task that runs run_on_insert.ps1 when SEQUSB is inserted.
+
 Using the USB
 1) Insert the USB.
 2) The download runs automatically.

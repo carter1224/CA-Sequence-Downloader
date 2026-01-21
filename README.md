@@ -34,3 +34,16 @@ HMI auto-run (optional):
 
 Notes:
 - Windows 10/11 only. Not supported on Windows CE.
+
+## Manual setup (PowerShell, HMI only)
+
+If you cannot use the setup EXE, you can install the auto-run task manually.
+
+1) Copy the `Sequence downloader USB` folder to the USB root.
+2) On the HMI (admin), run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
+```
+
+This installs the task that runs `run_on_insert.ps1` whenever a SEQUSB drive is inserted.
