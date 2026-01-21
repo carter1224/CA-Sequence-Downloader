@@ -39,4 +39,5 @@ jobs:
           tag_name: ${{ github.event_name == 'release' && github.ref_name || inputs.tag }}
           files: |
             release/SequenceDownloader.exe
+            release/SequenceDownloader_PC.zip
             release/SetupSequenceDownloaderUSB.exe
