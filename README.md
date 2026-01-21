@@ -20,25 +20,18 @@ Notes:
 
 ## USB tool (SetupSequenceDownloaderUSB.exe)
 
-Use this to prepare a USB drive.
+Use this to prepare a USB drive and enable auto-run on an HMI.
 
-USB prep (per USB drive):
+SequenceDownloaderUSB setup (per USB drive):
 1) Copy `SetupSequenceDownloaderUSB.exe` to the USB (any folder is fine).
-2) Run it as Administrator.
-3) It copies the required files and labels the drive `SEQUSB`.
-
-Notes:
-- Windows 10/11 only. Not supported on Windows CE.
-
-## Manual setup (PowerShell, HMI only)
-
-To enable auto-run on an HMI, install the task manually.
-
-1) Copy the `Sequence downloader USB` folder to the USB root.
-2) On the HMI (admin), run:
+2) Run it as Administrator. It copies the required files and labels the drive `SEQUSB`.
+3) On the HMI (admin), run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File "<USB>\Sequence downloader USB\install_usb_autorun.ps1"
 ```
 
 This installs the task that runs `run_on_insert.ps1` whenever a SEQUSB drive is inserted.
+
+Notes:
+- Windows 10/11 only. Not supported on Windows CE.
