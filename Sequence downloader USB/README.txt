@@ -30,6 +30,11 @@ Troubleshooting
 - If the download fails, check <USB>\output\EXPORT_ERROR.txt
 - If setup fails, check <USB>\Sequence downloader USB\SETUP_ERROR.txt
 
+Uninstall (remove USB auto-run on a PC)
+1) Open PowerShell as Administrator.
+2) Run:
+   schtasks.exe /Delete /TN "SequenceDownloaderUSB" /F
+
 Settings
 - Edit settings.json to set:
   ip, eth_slot, cpu_slot, out_dir (optional), chunk_size (optional), pretty_json (optional)
